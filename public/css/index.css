@@ -1,0 +1,143 @@
+*{
+   margin: 0;
+   padding: 0;
+   font-family: Arial;
+    color: #000;
+    text-decoration: none;
+  font-family: cursive;
+}
+
+body{
+    background-image: url("../fondo.jpg") ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+:root{
+    --sombra:rgba(0, 0, 0, 1);
+    --menucolor:#9F1B75;
+    --textprimary:#000;
+    --color2:#9F1B75;
+}
+.contenedor-inicio{
+    height: 100vh;
+    width: 100vw;
+   position: relative;
+}
+
+
+
+.seccion-principal{
+ 
+   margin: auto;
+   margin-top: 100px;
+   padding: 20px;
+   width: 80%;
+   background-color: transparent;
+}
+.seccion-principal h2{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.seccion-principal a{
+    text-decoration: none;
+}
+
+.contenido{
+     background-color: transparent;
+    display: grid;
+    margin: 10px 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+    gap: 40px;
+
+}
+
+
+.carta{
+     transition: all 100ms linear;
+    cursor: pointer;
+    width: 100%;
+    height: 330px;
+    border-radius: 5px;
+     
+    overflow: hidden;
+    position: relative;
+}
+.carta img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 200ms linear;
+}
+
+.carta img:hover{
+    transform: scale(1.1);
+}
+
+.carta .data{
+    width: 100%;
+    height: 60px;
+   
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-content: space-between;
+    z-index: 10;
+}
+
+.carta .data div{
+  
+    width: 100%;
+}
+.carta .data div span{
+    color: var(--color2);
+    font-weight: 900;
+    font-size: 20px;
+    font-family:  cursive;
+}
+.carta .data div span img{
+    width: 50px;
+    height: 40px;
+    display: inline;
+}
+.carta .data .descarga{
+    display: flex;
+    justify-content: end;
+}
+
+.data{
+   
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+}
+
+.data p{
+    font-family: cursive;
+}
+
+.data p:nth-child(1){
+    font-size: 30px;
+    font-weight: 400;
+    font-family: cursive;
+}
+.data p:nth-child(2){
+    font-size: 25px;
+    font-weight: 200;
+    font-family: cursive;
+    color: #D4AC0D;
+}
+.banner{
+     background-color: transparent;
+}
