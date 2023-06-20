@@ -6,15 +6,18 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class banerhorizontal extends Component
+class post-cart extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $type = true;
-    public function __construct($type)
+
+    public $post;
+     public $user;
+    public function __construct($post , $user)
     {
-        $this->type = $type;
+        $this->post = $post;
+        $this->user =$user;
     }
 
     /**
@@ -22,6 +25,6 @@ class banerhorizontal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.banerhorizontal'   );
+        return view('components.post-cart' , ['post' => $this->post , "user" => $this->user]);
     }
 }

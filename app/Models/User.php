@@ -17,12 +17,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar'
     ];
 
 
     //relacion con los post 
     public function post(){
-        return $this->belongsToMany(Post::class ,  'user__posts', 'user_id', 'post_id');
+        return $this->hasMany(Post::class  ,  'id' );
     }
 
 

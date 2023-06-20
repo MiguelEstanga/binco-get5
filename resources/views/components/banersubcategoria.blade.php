@@ -1,9 +1,8 @@
 <div>
     <div class="baner-categoria">
-      
-           <x-categoria/>
-      
-       
+      <div class="categoria">
+          xs
+      </div>
     </div>
  </div>
  <style type="text/css">
@@ -39,4 +38,3 @@
 
 </style>
 </div>
-

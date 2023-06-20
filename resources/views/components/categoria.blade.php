@@ -1,6 +1,5 @@
-<div class="baner-horizontal">
-      @if( $type == true ) 
-        <div class="categoria">
+
+        <div class="categoria ">    
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 1 ) }}">
                      <img src="{{ asset('/img/post/vehicle.png') }}" alt="vehiculos">
@@ -92,90 +91,57 @@
         </div>    
 
 
-    @endif
-    @if($type == false)
 
-      <div class="leyenda" style="z-index: 10;">  
-          <h1  style="color:#fff;font-weight: 900; font-size: 50px;" >  Bingo Mods</h1>
-          <p  style="text-align: center; color: #F1C40F;" >More trash for less cash</p>
-      </div>  
-
-    @endif    
-
-    <div class="difuminar">
+<style>
+    
+    .categoria .categoria .text{
       
-    </div>
-</div>
-
-<style type="text/css">
-    .difuminar{
-      z-index: 0;
-      position: absolute;
-      top: 0;
-      margin: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-       box-shadow: 0px 0px 25px #222;
-      backdrop-filter: blur(10px);
-    }
-    .baner-horizontal{
-     
-        width: 100%;
-        height: 250px;
-        margin-top: 80px;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        z-index: 22;
+        font-size: 15px;
+        font-weight: 900;
         display: flex;
+        align-items: center;
+        justify-content: center;  
         
+    }
+
+    .categoria .img{
+          width: 50px;
+          height: 50px;
+          border: none;
+         
+     } 
+    .categoria img {
+        width: 100%;
+        height: 100%;   
+
+    }
+    .categoria:hover{
+        transform: translateZ(200px);
+       
+    }
+
+    .categoria.active{
+        border: 1px solid var(--color2);
+        border-radius:5px;
+    }
+    .categoria .texto{
+    
+        display: flex;
         justify-content: center;
         align-items: center;
-        gap: 50px;
-        position: relative;
-        background-image: url('/img/banner-categoria.jpg');
-
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
+        font-size: 20px;
+        font-weight: 200;
     }
 
-    .baner-horizontal::before{
-        content: " ";
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #F1C40F;
-        border: solid 1px #F1C40F;
-    }
-
-
-    .baner-horizontal .categoria{
-        width: 70px;
-        height: 70px;
-        cursor: pointer;
-        margin: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        z-index: 10;
-    }
-
-    .baner-horizontal  img{
+    .categoria .logo{
+        background-color: black;
+        border: solid 1px black;
         width: 100%;
         height: 100%;
+        border-radius: 50%;
     }
-
-    .baner-horizontal .categoria .text{
-        font-size: 20px;
-        font-weight: 900;
-        text-align: center;
-        font-family: cursive;
-        color: #fff;
-    }
-
-    /**  efecto del baner **/
-  
-
-   
-
-  
 </style>

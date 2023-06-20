@@ -6,15 +6,14 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class banerhorizontal extends Component
+class footer extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $type = true;
-    public function __construct($type)
+    public function __construct()
     {
-        $this->type = $type;
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class banerhorizontal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.banerhorizontal'   );
+        return view('components.footer');
     }
 }

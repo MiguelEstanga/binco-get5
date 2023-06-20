@@ -9,8 +9,22 @@ class Post extends Model
 {
     use HasFactory;
 
+       protected $fillable = [
+        'post',
+        'titulo',
+        'imagen',
+        'archivo',
+        'id_usuario',
+        'id_categoria',
+        'id_subcategoria',
+        'descarga',
+        'avatar'
+        
+    ];
+
+
     public function user(){
-         return $this->belongsToMany(User::class, 'user__posts', 'user_id', 'post_id');
+         return $this->belongsTo(User::class, 'id_usuario');
     }
 
      public function comentarios()
@@ -18,8 +32,29 @@ class Post extends Model
         return $this->hasMany(Comentario::class);
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+
+
+      public function dislikes()
+    {
+        return $this->hasMany(dislike::class);
+    }
+      public function ilove()
+    {
+        return $this->hasMany(ilove::class);
+    }
+
      public function categorias()
     {
-        return $this->hasMany(Categoria::class,  'categoria_posts', 'posts_id', 'categoria_id');
+        return $this->belongsTo(Categoria::class,  'id_categoria');
+    }
+
+    public function subcategorias()
+    {
+        return $this->belongsTo(subcategoria::class,  'id_subcategoria');
     }
 }

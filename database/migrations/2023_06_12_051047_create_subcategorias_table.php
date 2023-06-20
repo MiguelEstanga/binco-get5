@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('subcategorias', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+
+            $table->foreignId('id_categoria')
+                  ->nullable()
+                  ->constrained('categorias')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete(); 
+
+
             $table->timestamps();
         });
     }

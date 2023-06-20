@@ -1,23 +1,36 @@
 	@extends('layauts.app')
 	<x-menu/>
-	<x-banerhorizontal/>
+	<x-banerhorizontal type="categoria" />
 	
 	<article class="contenido-show">
 		<div class="titulo">
 			<h2>
-				Titulo del post
+				{{ $post->titulo }}
 			</h2>
 		</div>
 		<div class="imgagen">
-			<img src="https://i.blogs.es/383043/portada-gta-v-xbox-series-trucos/1366_2000.jpeg" alt="imgagen">
+			<img   src="{{ Storage::url( $post->imagen) }}">
+			
 		</div>
 		<div class="data-post">
 			<div class="comentario">
-				
+				<span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><g id="feCalendar0" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="feCalendar1" fill="black"><path id="feCalendar2" d="M8 4h8V2h2v2h1a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V2h2v2ZM5 8v12h14V8H5Zm2 3h2v2H7v-2Zm4 0h2v2h-2v-2Zm4 0h2v2h-2v-2Zm0 4h2v2h-2v-2Zm-4 0h2v2h-2v-2Zm-4 0h2v2H7v-2Z"/></g></g></svg>
+
+				</span>
+				<span>
+					{{ $post->created_at }}
+				</span>
+				<span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="black" d="M6 20q-.825 0-1.413-.588T4 18v-3h2v3h12v-3h2v3q0 .825-.588 1.413T18 20H6Zm6-4l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11l-5 5Z"/></svg>
+				</span>
+				<span>
+					Descargas  ({{ $post->descarga }})
+				</span>
 			</div>
 			<div class="categoria">
-				<span>categoria</span>
-				<span>subcategoria</span>
+				<span>{{ $post->categorias->categorias  }}</span>
+				<span>{{ $post->subcategorias->descripcion }}</span>
 			</div>
 		</div>
 
@@ -25,54 +38,151 @@
 		<aside class="descarga" >
 			<div class="usuario">
 				<div class="imagen">
-					<img src="" alt="">
+					<img style="border-radius: 50%;" src="{{ Storage::url(  $post->user->avatar  ) }}" alt="">
 				</div>
-				usuario@usuario.com
+				{{ $post->user->email }}
 			</div>
 			<div class="boton-descarga">
-				<form action="">
+				<form action="{{ route('post.descarga' , $post->id  ) }}"  >
+					@csrf
 					<button>
-						DOWLOAD
+						<span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="white" d="M6 20q-.825 0-1.413-.588T4 18v-3h2v3h12v-3h2v3q0 .825-.588 1.413T18 20H6Zm6-4l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11l-5 5Z"/></svg>
+
+						</span>
+						<span style="color: #fff;">
+							
+							Download
+					
+						</span>
+						
+						
 					</button>
 				</form>
 			</div>
 			<div class="like">
 				<div class="item">
-					like
+						({{ count($post->likes) }})
+						<form action="{{ route('like.add') }}" method="post">
+							@csrf
+							@auth
+								<input hidden type="text" name="user_id" value="{{ Auth::user()->id }}">
+								<input hidden type="text"  name="post_id" value="{{ $post->id }}">
+							@endauth
+						
+							<button style="border:none; background-color: transparent;">
+								<img src="{{  asset('img/post/Like.png') }}"  }}" alt="">
+							</button>
+
+							
+						</form>
 				</div>
 				<div class="item">
-					dont like
+						({{ count($post->dislikes) }})
+						<form action="{{ route('dislike.add') }}" method="post">
+								@csrf
+							@auth
+								<input hidden type="text" name="user_id" value="{{ Auth::user()->id }}">
+								<input hidden type="text"  name="post_id" value="{{ $post->id }}">
+							@endauth
+							<button style="border:none; background-color: transparent;">
+								<img src="{{  asset('img/post/Dislike.png') }}"  }}" alt="">
+							</button>
+
+							
+						</form>
+					
 				</div>
 				<div class="item">
-					<3
+					({{ count($post->ilove) }})
+					<form action="{{ route('ilove.add')  }}" method="post">
+							@csrf
+							@auth
+								<input hidden type="text" name="user_id" value="{{ Auth::user()->id }}">
+								<input hidden type="text"  name="post_id" value="{{ $post->id }}">
+							@endauth
+							<button style="border:none; background-color: transparent;">
+								<img src="{{  asset('img/post/Meencanta.png') }}"  }}" alt="">
+							</button>
+
+							
+						</form>
+					
+					
+					
 				</div>
 			</div>
 		</aside>
 	</article>
 	<div class="descripcion">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at minima, perferendis rerum atque doloremque voluptate dolorem tempore voluptatum quaerat nihil culpa, accusamus nemo. Recusandae quidem, quasi. Expedita, doloremque excepturi.
+		{{ $post->post }}
 	</div>
-
-	@for($i = 0 ; $i<10 ; $i++)
-		<div class="comentarios">
+	
+	@foreach($post->comentarios as $comentario)
+	 <div class="comentarios">
 		<div class="banercomentario">
 			<div class="avatar">
-				<img src="https://i.blogs.es/383043/portada-gta-v-xbox-series-trucos/1366_2000.jpeg" alt="">
+				<img src="{{ Storage::url(  $comentario->avatar  )  }}" alt="">
 			</div>
 			<div class="comentarios-user">
 				<div class="username">
-					Nombre del Usuarrio
+					{{ $comentario->username }}
 				</div>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam nihil dolorem molestiae optio magni at, laudantium hic nostrum inventore sapiente harum, necessitatibus. Est, qui necessitatibus sed magnam, eius non repellat! Lorem ipsum dolor sit amet consectetur adipisicing, elit. A beatae eos repellat sit, inventore voluptatum veritatis error quidem illum nisi nostrum similique quibusdam omnis fugit suscipit consequuntur laboriosam soluta, voluptas!
+					{{ $comentario->correo }}
+				<div style="font-weight: 900;">
+				{{ $comentario->comentario }}
+				
+			
 			</div>
+			</div>
+			
 		</div>
 	</div>
-	@endfor
+	@endforeach
+	
+	<div class="formulario_comentario">
+		<form action="{{ route('comentario.post') }}" method="post">
+			@csrf
+			@auth
+				<input hidden type="text" name="username" value="{{ Auth::user()->name }}">
+				<input hidden type="text" name="avatar" value="{{ Auth::user()->avatar }}">
+				<input hidden type="text" name="email" value="{{ Auth::user()->email }}">
+				<input hidden type="text" name="post_id" value="{{ $post->id }}">
+			@endauth
+			
+			<div>
+				<button class="btn " style="background-color: #F1C40F; width: 100%; height: 100%;">
+				comentar
+			</button>
+			</div>
+			<div class="form-floating">
+  				<textarea name="comentario" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  				<label for="floatingTextarea">Comments</label>
+			</div>
+		
+		</form>
+	</div>
 
 
+	<div class="publicaciones">
+		
+	</div>
 	
 
 	<style type="text/css">
+
+		.formulario_comentario{
+			
+			margin: 80px auto;
+			width: 47%;
+			
+		}
+
+		.formulario_comentario form{
+				display:grid;
+				gap: 10px;
+			grid-template-columns: 10% auto;
+		}
 		.contenido-show{
 			margin: auto;
 			width: 40%;
@@ -108,6 +218,7 @@
 		.contenido-show .data-post div{
 			display: flex;
 			
+			align-items: center;
 		}
 
 		.contenido-show .data-post .categoria{
@@ -127,22 +238,26 @@
 
 		.descripcion{
 			margin: auto;
-			width: 1000px;
+			width: 38%;
 			padding: 10px;
 			font-size: 20px;
 			font-weight: 100;
 			font-size: cursive;
-
+			text-align: justify;
+			
 		}
 
 		.comentarios{
 			margin: auto;
-			width: 1000px;
-			min-height: 200px;
-			padding: 10px;
+			width: 47%;
+			min-height: 150px;
+		
 			display: grid;
+		
+			align-items: center;
 			gap: 10px;
-			margin-top: 40px;
+			margin-top: 30px;
+		
 		}
 
 		.comentarios .banercomentario{
@@ -150,9 +265,8 @@
 			height: 100px;
 			
 			display: grid;
-			grid-template-columns: 20% 100% ;
-			justify-content: center;
-			align-items: center;
+			grid-template-columns: 20% auto ;
+		
 			gap: 10px;
 		}
 
@@ -214,23 +328,31 @@
 		.descarga .boton-descarga{
 			margin-top: 10px;
 			width: 100%;
-			height: 100px;
+			height: 200px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+		
 		}
 
 		.descarga .boton-descarga button{
 			color: #fff;
-			font-size: 20px;
+			font-size: 25px;
 			font-weight: 900;
 			padding: 10px;
 			border: none;
 			text-align: center;
 			background-color:  #F1C40F;
-			width: 150px;
-			height: 50px;
+			color: #fff;
+			width: 280px;
+			height: 80px;
 			margin: auto;
+			border-radius: 10px;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
 		}
 
 		.descarga .like{
@@ -245,11 +367,20 @@
 		}
 
 		.descarga .like .item{
-			border: solid 1px black;
+			
 			border-radius: 50%;
 			height: 100px;
 			width: 100px;
 			display: grid;
 			place-items: center;
+		}
+
+		.publicaciones{
+			width: 500px;
+			height: 1000px;
+			position: absolute;
+			right: 40px ;
+			top: 800px;
+			
 		}
 	</style>

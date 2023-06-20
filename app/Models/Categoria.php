@@ -11,7 +11,11 @@ class Categoria extends Model
 
     public function posts()
     {
-        return $this->belongsToMany(Post::class , 'categoria_posts', 'categoria_id', 'post_id');
+        return $this->hasMany(Post::class , 'id_categoria');
+    }
+
+    public function subcategorias(){
+        return $this->hasMany(subcategoria::class , 'id_categoria');
     }
      
 }

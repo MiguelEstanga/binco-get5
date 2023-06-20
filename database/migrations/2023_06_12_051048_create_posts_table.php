@@ -18,6 +18,29 @@ return new class extends Migration
             $table->string('archivo');
             $table->string('imagen');
             $table->string('titulo');        
+            $table->float('like')->nullable();
+            $table->double('descarga');
+            $table->float("i_love")->nullable();
+            
+            $table->foreignId('id_categoria')
+                  ->nullable()
+                  ->constrained('categorias')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();  
+
+            $table->foreignId('id_subcategoria')
+                  ->nullable()
+                  ->constrained('subcategorias')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();        
+            
+
+            $table->foreignId('id_usuario')
+                  ->nullable()
+                  ->constrained('users')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();  
+
 
             $table->timestamps();
         });

@@ -30,8 +30,9 @@ body{
 
 
 .seccion-principal{
- 
-   margin: auto;
+
+   margin-left:300px;
+
    margin-top: 100px;
    padding: 20px;
    width: 80%;
@@ -97,8 +98,10 @@ body{
 }
 
 .carta .data div{
-  
+   display: flex;
     width: 100%;
+     align-items: center;
+     gap: 10px;
 }
 .carta .data div span{
     color: var(--color2);
@@ -112,10 +115,16 @@ body{
     display: inline;
 }
 .carta .data .descarga{
-    display: flex;
+ 
     justify-content: end;
+   
+   
 }
+.carta .data .descarga span{
+    position: relative;
+    left: -50px;
 
+}
 .data{
    
     width: 100%;
