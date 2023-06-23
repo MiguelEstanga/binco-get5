@@ -12,9 +12,11 @@ class banerhorizontal extends Component
      * Create a new component instance.
      */
     public $type = true;
-    public function __construct($type)
+    public $categoria = '' ;
+    public function __construct($type , $categoria)
     {
         $this->type = $type;
+        $this->categoria = $categoria;
     }
 
     /**

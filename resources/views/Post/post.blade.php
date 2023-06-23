@@ -2,7 +2,7 @@
 
 
 
- <x-banerhorizontal  :type="$type = false" />		
+ <x-banerhorizontal  :type="$type = false" categoria=""/>		
  <x-categoria-baner/>
  
 

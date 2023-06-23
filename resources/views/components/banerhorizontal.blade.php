@@ -1,15 +1,16 @@
 <div class="baner-horizontal">
       @if( $type == true ) 
+
         <div class="categoria">
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 1 ) }}">
-                     <img src="{{ asset('/img/post/vehicle.png') }}" alt="vehiculos">
+                     <img src="{{ $categoria == 1 ? asset('/img/veiculoslogo.png'): asset('/img/post/vehicle.png')  }}" alt="vehiculos">
                 </a>
                    
 
               </div>
             <div class="text">
-                Vehiculos
+                Vehiculos 
             </div>
         </div>
         <div class="categoria  ">
@@ -17,7 +18,7 @@
             
             <div class="img"> 
                <a href="{{ route('categoria.busqueda' , 2 ) }}" >
-                 <img src="{{ asset('/img/post/helicopter.png') }}" alt="helicoptero">
+                 <img src="{{ $categoria == 2 ? asset('/img/helicopterologo.png') :asset('/img/post/helicopter.png') }}" alt="helicoptero">
               </a>
             </div>
               <div class="text">
@@ -30,7 +31,7 @@
       
               <div class="img"> 
                     <a href="{{ route('categoria.busqueda' , 4 ) }}">
-                         <img src="{{ asset('/img/post/Boat.png') }}" alt="Barcos">
+                         <img src="{{ $categoria ==  4 ? asset('/img/helicopterologo.png') :asset('/img/post/Boat.png') }}" alt="Barcos">
 
                    </a>
                
@@ -44,7 +45,7 @@
 
                 <a href="{{ route('categoria.busqueda' , 3 ) }}">
                   
-                     <img src="{{ asset('/img/post/Map.png') }}" alt="Mapas">
+                     <img src="{{ $categoria ==  3 ? asset('/img/mapaslogo.png') : asset('/img/post/Map.png') }}" alt="Mapas">
                 </a>
                 
             </div>
@@ -56,7 +57,7 @@
           <div class="categoria  ">
             <div class="img"> 
               <a href="{{ route('categoria.busqueda' , 5 ) }}">
-                 <img src="{{ asset('/img/post/Plane.png') }}" alt="Aviones">
+                 <img src="{{ $categoria == 5  ? asset('/img/avioneslogo.png') :asset('/img/post/Plane.png') }}" alt="Aviones">
 
               </a>
                
@@ -69,7 +70,7 @@
           <div class="categoria  ">
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 6 ) }}">
-                 <img src="{{ asset('/img/post/skins.png') }}" alt="skins">
+                 <img src="{{ $categoria ==  6 ? asset('/img/skinslogo.png') :asset('/img/post/skins.png') }}" alt="skins">
 
               </a>
               
@@ -83,7 +84,7 @@
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 7 ) }}">
                 
-                  <img src="{{ asset('/img/post/Pawn.png') }}" alt="pawsScripr">
+                  <img src="{{ $categoria ==  7 ? asset('/img/pawnScriprlogo.png') : asset('/img/post/Pawn.png') }}" alt="pawsScripr">
               </a>
             </div>
               <div class="text">

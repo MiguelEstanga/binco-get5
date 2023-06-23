@@ -52,5 +52,5 @@ Route::get( '/selectSub/{id}' , function ($id) {
 })->name('select');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/inicio');
 });
