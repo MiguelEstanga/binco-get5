@@ -1,22 +1,34 @@
 @extends('layauts.app')
 
-
-
- <x-banerhorizontal  :type="$type = false" categoria=""/>		
- <x-categoria-baner/>
  
 
-@section('banerpublicidad')
+@section('banerhorizontal') 
+  <x-banerhorizontal  :type="$type = false" categoria=""/>        
+@endsection
+
+@section('categorias')
+	 <x-categoria-baner/>
+@endsection
+
+@section('publicidad')
 	  <x-banerpublicidad/>
-@endsection 
-
-@section('titulocontenido' , 'last uploaded')
-
+@endsection
 @section("contenido")
-		
+
+	
 	@foreach($posts as $post)
-		<x-post-cart :post="$post"   />
+			<a href="{{ route('post.show' , $post->id) }}">
+					<x-post-cart :post="$post" />
+			</a>
+		
 	@endforeach
 
 @endsection
+	
+@section("paginate")
+	{{ $posts->links() }}
+@endsection
 
+<style>
+	
+</style>

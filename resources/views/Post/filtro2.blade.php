@@ -5,8 +5,11 @@
 	  <x-banerpublicidad/>
 @endsection 
 
-@section('titulocontenido' )
-	{{ $subcategorias->descripcion }}
+@section('banerhorizontal')
+	     <x-banerhorizontal type="true" :categoria="$subcategorias->categoria->id" />       
+@endsection
+@section('subcategorias')
+    <x-subcategoria  :categorias="$categorias" />
 @endsection
 @section('contenido')
 

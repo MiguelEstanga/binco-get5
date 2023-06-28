@@ -96,9 +96,9 @@
     @endif
     @if($type == false)
 
-      <div class="leyenda" style="z-index: 10;">  
-          <h1  style="color:#fff;font-weight: 900; font-size: 50px;" >  Bingo Mods</h1>
-          <p  style="text-align: center; color: #F1C40F;" >More trash for less cash</p>
+      <div class="leyenda" style="z-index: 10;  ">  
+          <h1  style="color:#fff;font-weight: 900; font-size: 50px;" >  BINCO MODS</h1>
+          <p  style="text-align: center; color: #F1C40F; font-weight: 900; " >More trash for less cash</p>
       </div>  
 
     @endif    
@@ -122,7 +122,7 @@
     }
     .baner-horizontal{
      
-        width: 100%;
+        width:100%;
         height: 250px;
         margin-top: 80px;
         display: flex;
@@ -160,6 +160,8 @@
         z-index: 10;
     }
 
+
+
     .baner-horizontal  img{
         width: 100%;
         height: 100%;
@@ -175,8 +177,47 @@
 
     /**  efecto del baner **/
   
+  @media (max-width:1200px) {
+      .baner-horizontal{
+       
+        width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        margin-left: 20px;
+        justify-content: center;
+        align-items: center;
+      }
 
-   
+      .baner-horizontal .categoria{
+        width: 70px;height: 70px;
+        
+      }
+
+      .baner-horizontal .categoria .text{
+        font-size: 18px;
+      }
+  }
+
+   @media (max-width: 500px) {
+     .baner-horizontal .categoria{
+      width: 60px;height: 20px;
+      
+     }
+
+     .baner-horizontal .categoria .text{
+      font-size: 14px;
+       
+     }
+
+     .baner-horizontal{
+      height: 350px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+     }
+   }
 
   
 </style>

@@ -1,5 +1,4 @@
-<div>
-    
+
     <article class="publicidad">
        <div class="informacion">
         <div class="swiper mySwiper">
@@ -24,23 +23,27 @@
             <div class="swiper-pagination"></div>
         </div>
             
-    </div>
+        </div>
         <div class="img">   
             <img src="https://cdn.ligadegamers.com/imagenes/mods-locos-gta-v-og.jpg" alt="moods">
         </div>
     </article>
     
-</div>
+
 <style type="text/css">
     .publicidad{
-        width: 70%;
-        height: 400px;
+
+        margin: auto;
+        margin-top: 20px;
+        max-width:80rem;
+        height: 40rem;
         display: grid;
-        grid-template-columns: 70% auto;
+        grid-template-columns: 70% 20%;
         gap: 10px;
-        position: relative;
+       
         margin-bottom: 40px;
     }
+
 
     .informacion{
         width: 100%;
@@ -94,4 +97,45 @@
       object-fit: cover;
     }
 
+
+    @media (max-width: 1100px) {
+
+        .publicidad{
+                   width: 100%;
+                height: auto;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                        }
+
+        .publicidad .img{
+          height: 100%;
+          width: 80%;
+          margin: auto;
+          overflow: hidden;   
+          border: solid 1px;
+          box-shadow: 0 0 10px var(--sombra);     
+        }    
+
+       
+    }
+
+      @media (max-width: 500px) {
+
+        .publicidad{
+           width: 100vw;
+        }
+
+        .publicidad .img{
+          border-radius:10px;
+          height: 100%;
+          width: 80%;
+          margin: auto;
+          overflow: hidden;   
+          border: solid 1px;
+          box-shadow: 0 0 10px var(--sombra);     
+        }    
+
+       
+    }
 </style>

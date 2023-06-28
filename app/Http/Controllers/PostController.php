@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
@@ -11,7 +11,7 @@ use App\Models\Comentario;
 use App\Models\Like;
 use App\Models\ilove;
 use App\Models\dislike;
-
+use App\Models\Imagenes;
 use App\Models\subcategoria;
 use App\Models\User;
 class PostController extends Controller
@@ -22,7 +22,7 @@ class PostController extends Controller
     public function index()
     {
         $categoria = Categoria::all();
-        $posts = Post::select('id','titulo'  , 'imagen', 'descarga' , 'id_usuario')->with('User:id,name')->get();
+        $posts = Post::where('aprovacion' , '=' , '1')->paginate(9);
         return view('Post.post' , ['categorias' => $categoria , 'posts' => $posts ]);
     }
 
@@ -41,21 +41,49 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
-        Post::create([
+   
+    $request->validate([
+            'post' => 'required',
+            'titulo' => 'required',
+            'categoria' => 'required',
+            'subcategoria' => 'required',
+            
+        ]);
+    
+      $newpost =  Post::create([
             'post' => $request->post,
-            'imagen' => $request->file('imagen')->store('public'),
+            'imagen' => $request->file('imagen_principal')->store('public'),
             'archivo' =>   $request->file('archivo')->store('public'),
             'titulo' => $request->titulo,
-            'like' => 0 ,
             'descarga'=> 0,
-             'i_lov' => 0 ,
+         
             'id_categoria' => $request->categoria,
             'id_subcategoria' => $request->subcategoria,
             'id_usuario' => $request->user_id
 
-         ]);
-        return redirect('/inicio');
+    ]);
+
+    //para almacenar las imagens
+    
+     
+    if($request->hasfile('galeria'))
+    {
+       $imagenes = [];
+       $imagenes = $request->file('galeria');
+       foreach($imagenes as $imagen)
+        {
+           
+            Imagenes::create([
+                "post_id" => $newpost->id,
+                'imagenes' =>  $imagen->store('public')
+            ]);    
+          }
+        
+     }  
+
+       
+        
+        return redirect('/perfil' )->with('post' , 'su publicacion sera registrada por el administrador resivira un mensage cuando este lista');
     }
 
     /**
@@ -64,9 +92,8 @@ class PostController extends Controller
     public function show(string $id)
     {
          $post = Post::find($id);
-        
-
-        return  view('Post.show' , ['post' => $post ]) ;
+         $postPaginste = $post::where("id_usuario" , "=" ,$post->user->id)->paginate(4);  
+         return  view('Post.show' , ['post' => $post  , 'masposter' => $postPaginste ]) ;
     }
 
     //descarga
@@ -86,11 +113,16 @@ class PostController extends Controller
 
     public function subcategoriaShow($id){
         $subcategorias = subcategoria::find($id);
-        return view('post.filtro2' , ['subcategorias' => $subcategorias    ]);
+        $categorias = Categoria::find($subcategorias->categoria->id);
+
+        return view('post.filtro2' , ['subcategorias' => $subcategorias , 'categorias' => $categorias   ]);
 
     }
 
     public function comentario(Request $request){
+        $request->validate([
+            'comentario' => 'required'
+        ]);
         $result = Comentario::create([
             'comentario' => $request->comentario,
             'post_id' => $request->post_id,
@@ -110,39 +142,35 @@ class PostController extends Controller
 
     public function like(Request $request ){
 
-        $repetir = Like::where('user_id' , '=' , $request->user_id ,'and' , 'post_id' , '=' , $request->post_id)->first();
+        $usuario_id = Like::where('user_id' , '=' ,Auth::user()->id)->first();
+        $post_id = Like::where('post_id' , '=' , $request->post_id ) ->first();
 
-       if($repetir){
+      
+       if( gettype($usuario_id) != "NULL"  && gettype($post_id) != 'NULL'  ){
             $repetir->delete();
-             
-
        }else{
-         
          $data =  Like::create([
-            'user_id' => $request->user_id,
+            'user_id' => Auth::user()->id,
             'post_id' => $request->post_id
          ]);
-
-         $data->save();
        }
 
         return  redirect('inicio/'.$request->post_id );
     }
-
+    
     //para los dislike
 
      public function dislike(Request $request ){
 
-        $repetir = dislike::where('user_id' , '=' , $request->user_id ,'and' , 'post_id' , '=' , $request->post_id)->first();
+          $usuario_id = dislike::where('user_id' , '=' ,Auth::user()->id)->first();
+        $post_id = dislike::where('post_id' , '=' , $request->post_id ) ->first();
 
-       if($repetir){
-            $repetir->delete();
-             
-
+       if(gettype($usuario_id) != "NULL"  && gettype($post_id) != 'NULL'){
+          $post_id->delete();
        }else{
          
          $data =  dislike::create([
-            'user_id' => $request->user_id,
+            'user_id' =>Auth::user()->id,
             'post_id' => $request->post_id
          ]);
 
@@ -156,16 +184,17 @@ class PostController extends Controller
 
      public function ilove(Request $request ){
 
-        $repetir = ilove::where('user_id' , '=' , $request->user_id ,'and' , 'post_id' , '=' , $request->post_id)->first();
+      $usuario_id = ilove::where('user_id' , '=' ,Auth::user()->id)->first();
+        $post_id = ilove::where('post_id' , '=' , $request->post_id ) ->first();
 
-       if($repetir){
-            $repetir->delete();
+       if(gettype($usuario_id) != "NULL"  && gettype($post_id) != 'NULL'){
+            $post_id->delete();
              
 
        }else{
          
          $data =  ilove::create([
-            'user_id' => $request->user_id,
+            'user_id' => Auth::user()->id,
             'post_id' => $request->post_id
          ]);
 

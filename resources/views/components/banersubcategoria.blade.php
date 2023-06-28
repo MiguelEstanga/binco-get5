@@ -11,7 +11,7 @@
         z-index: 2;
         height: 600px;
         position: absolute;
-        left: 100px;
+        left: 50px;
         top: 400px;
         display: flex;
         justify-content: center;

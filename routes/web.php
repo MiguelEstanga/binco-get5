@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use  \App\Models\Categoria;
 use  \App\Http\Controllers\PostController;
+use  \App\Http\Controllers\UserController;
 use  \App\Http\Controllers\login;
 
 
@@ -41,8 +42,22 @@ Route::get('/register' , [login::class , 'register'])->name('register');
 Route::post('/register' , [login::class , 'registerAuht'])->name('register.post');
 
 
+//desboard
+
+Route::get('/perfil'  , [UserController::class , 'index'] )->middleware('auth')->name('user.desboard');
+Route::get('/perfil/{id}/editar-datos'  , [UserController::class , 'show'] )->middleware('auth')->name('user.show');
+Route::put('/perfil/{id}/editando'  , [UserController::class , 'put'] )->middleware('auth')->name('user.put');
+
+//administrador
+
+Route::get('/admin/panel'  , [UserController::class , 'administrador'] )->middleware('auth')->name('user.admin');
+Route::get('/admin/panel/{id}'  , [UserController::class , 'verificacion'] )->middleware('auth')->name('admin.show');
+Route::put('/admin/panel/{id}/respondiendo'  , [UserController::class , 'respuestaAdmin'] )
+                    ->middleware('auth')
+                    ->name('admin.respuesta');
 
 
+//login
 Route::get('/login'  , [login::class , 'login'])->name('login');
 Route::post('/login'  , [login::class , 'auht'])->name('login');
 
@@ -50,6 +65,8 @@ Route::get( '/selectSub/{id}' , function ($id) {
     $subcategorias = Categoria::find($id);
     return json_encode( $subcategorias->subcategorias );
 })->name('select');
+
+
 
 Route::get('/', function () {
     return redirect('/inicio');

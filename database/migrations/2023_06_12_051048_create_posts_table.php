@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('post');
             $table->string('archivo');
             $table->string('imagen');
+            $table->integer('aprovacion')->default(0);
             $table->string('titulo');        
-            $table->float('like')->nullable();
+        
             $table->double('descarga');
-            $table->float("i_love")->nullable();
+            
             
             $table->foreignId('id_categoria')
                   ->nullable()

@@ -34,18 +34,21 @@ class Post extends Model
 
     public function likes()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Like::class , 'post_id');
     }
 
-
+    public function Imagenes()
+    {
+        return $this->hasMany(Imagenes::class , 'post_id');
+    }
 
       public function dislikes()
     {
-        return $this->hasMany(dislike::class);
+        return $this->hasMany(dislike::class ,'post_id' );
     }
       public function ilove()
     {
-        return $this->hasMany(ilove::class);
+        return $this->hasMany(ilove::class , 'post_id');
     }
 
      public function categorias()

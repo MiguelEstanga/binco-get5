@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+	    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 	<title>crear post</title>
 </head>
 <body>
@@ -14,27 +15,62 @@
 		action="{{ route('post.store') }}" 
 		method="post"
 		enctype="multipart/form-data" 
-		
+		id="my-awezone-dropzone" 
 		>
 		@csrf
 		<div style="font-size: 30px;">
 			Subir archivo
 		</div>
+			@error("galeria")
+				<small>
+					 *{{ $message }}
+				</small>
+			@enderror
 		<div>
 			<label class="form-label" for="archivo"> archivo </label>
 			<input type="file"  class="form-control" id="archivo" name="archivo" >
 		</div>
 		<div>
-			<label  class="form-label" for="imagen"> imagen </label>
-			<input type="file" class="form-control" id="imagen" name="imagen" >
+			
+				<label  class="form-label" style="cursor:pointer;"  for="imagen" id="imagenes-file" >
+				 	imagen principal
+				</label>
+			<input type="file"  accept="image/*"  class="form-control" id="imagen" name="imagen_principal" >
+				@error("galeria")
+				<small>
+					 *{{ $message }}
+				</small>
+			@enderror
 		</div>
+
+		<div>
+			multiples imagenes
+			<input type="file" multiple accept="image/*"  name="galeria[]"   class="form-control" >
+			@error("galeria")
+				<small>
+					 *{{ $message }}
+				</small>
+			@enderror
+		</div>
+
+	
 		<div>
 			<label for="post" class="form-label" >descripcion</label>
 			<input type="text"  class="form-control" id="post" name="post" >
+				@error("galeria")
+				<small>
+					 *{{ $message }}
+				</small>
+			@enderror
 		</div>
 		<div>
 			<label for="titulo" class="form-label" >titulo</label>
 			<input type="text" id="titulo" class="form-control" name="titulo">
+				@error("galeria")
+				<small>
+					 *{{ $message }}
+				</small>
+			@enderror
 		</div>
 		<div>
 			<label for="categoria">categoria</label>
@@ -68,7 +104,7 @@
 </html>
 
  <script type="text/javascript">
- 	
+ 
  	categoria.addEventListener('change' , e => {
  			
  			 fetch(`selectSub/${e.target.value}`)
@@ -84,6 +120,8 @@
  				subcategoria.disabled = false
  			})
  	})
+
+ 	
  </script>	
 
 
@@ -117,4 +155,6 @@
 		color: #fff;
 		cursor: pointer;
 	}
+
+
 </style>

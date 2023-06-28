@@ -19,13 +19,33 @@
 
 			<label class="form-label" for="email">email</label>
 			<input class="form-control" type="text" name="email" id="email" >
+			@error('email')
+						<small style="color:red;">
+					*{{ $message }}
+				</small>			
+			@enderror
 		</div>
 		<div class="">
 			<label class="form-label " for="password">password</label>
 			<input  class="form-control" type="text" name="password" id="password" >
 
-			<label class="form-label" for="password_confirme">password confime</label>
-			<input type="password" class="form-control" name="password_confirme" id="password_confirme" >
+			@error('password')
+				<small style="color:red;">
+					*{{ $message }}
+				</small>			
+			@enderror
+
+			<label class="form-label" for="password_confirme">
+
+				password confime
+					@error('confirme_password')
+						<small style="color:red;">
+					*{{ $message }}
+				</small>			
+			@enderror
+			</label>
+			<input type="password" class="form-control" name="password_confirmation" id="password_confirme" >
+		
 		</div>
 		<div class="" >
 			<label  class="form-label" for="avatar">Avtar</label>
