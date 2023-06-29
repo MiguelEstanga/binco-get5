@@ -18,7 +18,7 @@ class login extends Controller
       
           $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'min:4|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:4'
 

@@ -22,8 +22,17 @@ class PostController extends Controller
     public function index()
     {
         $categoria = Categoria::all();
-        $posts = Post::where('aprovacion' , '=' , '1')->paginate(9);
-        return view('Post.post' , ['categorias' => $categoria , 'posts' => $posts ]);
+        $posts = Post::where('aprovacion' , '=' , '1')->paginate(8);
+        $postmorelike = Post::withCount('likes')
+            ->orderBy('likes_count' , 'desc')->paginate(8);
+         
+
+        return view('Post.post' , 
+                [ 
+                    'categorias' => $categoria , 
+                    'posts' => $posts,
+                    'withmorelike' => $postmorelike 
+                ]);
     }
 
     /**
@@ -108,14 +117,14 @@ class PostController extends Controller
 
     public function categoriaShow($id){
         $categorias = Categoria::find($id);
-        return view('post.filtro' , ['categorias' => $categorias    ]);
+        return view('Post.filtro' , ['categorias' => $categorias    ]);
     }
 
     public function subcategoriaShow($id){
         $subcategorias = subcategoria::find($id);
         $categorias = Categoria::find($subcategorias->categoria->id);
 
-        return view('post.filtro2' , ['subcategorias' => $subcategorias , 'categorias' => $categorias   ]);
+        return view('Post.filtro2' , ['subcategorias' => $subcategorias , 'categorias' => $categorias   ]);
 
     }
 

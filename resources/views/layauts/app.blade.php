@@ -26,7 +26,7 @@
  
    @yield("subcategorias")
 
-   <section class="seccion-principal" >
+   <section class="seccion-principal"  >
         
       
            @yield("contenido")
@@ -63,3 +63,6 @@
       },
     });
   </script>
+  <style>
+ 
+  </style>

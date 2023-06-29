@@ -32,11 +32,15 @@
 
 <style type="text/css">
     .publicidad{
-
-        margin: auto;
+        
+        position : relative;
+        
         margin-top: 20px;
-        max-width:80rem;
-        height: 40rem;
+        position:relative;
+        left:-75px;
+        width:90rem;
+        margin:auto;
+        height: 20rem;
         display: grid;
         grid-template-columns: 70% 20%;
         gap: 10px;
@@ -44,7 +48,11 @@
         margin-bottom: 40px;
     }
 
-
+    @media (max-width:1400px) {
+        .publicidad{
+            left:20px;
+        }  
+    }
     .informacion{
         width: 100%;
         height: 100%;
@@ -102,10 +110,11 @@
 
         .publicidad{
                    width: 100%;
-                height: auto;
+                height: 30rem;
                 margin: auto;
                 display: flex;
                 flex-wrap: wrap;
+                left:0;
                         }
 
         .publicidad .img{
@@ -123,6 +132,7 @@
       @media (max-width: 500px) {
 
         .publicidad{
+            
            width: 100vw;
         }
 

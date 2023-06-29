@@ -197,11 +197,10 @@
     }
     .imagen  .galeria{
         
-       
         width: 100%;
         display: grid;
         position: relative;
-        top: 4.5rem;
+        top: 2.8rem;
         grid-template-rows: repeat(4, 1fr);
         
     }
@@ -211,7 +210,8 @@
     .imagen .galeria .imagenes{
         cursor: pointer;
         height: 80px;
-        margin-bottom: 4px;
+       
+        margin-bottom: 1px;
     }
 
       @media (max-width:1230px) {
@@ -254,6 +254,8 @@
         }
         .imagen .galeria{
             margin-bottom: 50px;
+          
+            width: 100vw;
         }
 
     }
