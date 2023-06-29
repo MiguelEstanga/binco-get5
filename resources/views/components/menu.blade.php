@@ -2,7 +2,7 @@
         <div class="logo">
             <figcaption>
                 <a href="{{ route('post.index') }}">
-                     <img width="100%" src="{{ asset('/banner_blanco.png') }}" alt="logo">
+                     <img width="100%" src="{{ asset('/Banner_blanco.png') }}" alt="logo">
                 </a>
                    
             </figcaption>
