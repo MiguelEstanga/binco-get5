@@ -2,7 +2,7 @@
         <div class="categoria ">    
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 1 ) }}">
-                     <img src="{{ asset('/img/post/vehicle.png') }}" alt="vehiculos">
+                     <img src="{{ asset('/img/post/Vehicle.png') }}" alt="vehiculos">
                 </a>
                    
 
@@ -68,7 +68,7 @@
           <div class="categoria  ">
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 6 ) }}">
-                 <img src="{{ asset('/img/post/skins.png') }}" alt="skins">
+                 <img src="{{ asset('/img/post/Skins.png') }}" alt="skins">
 
               </a>
               

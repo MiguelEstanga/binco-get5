@@ -4,7 +4,7 @@
         <div class="categoria">
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 1 ) }}">
-                     <img src="{{ $categoria == 1 ? asset('/img/veiculoslogo.png'): asset('/img/post/vehicle.png')  }}" alt="vehiculos">
+                     <img src="{{ $categoria == 1 ? asset('/img/Veiculoslogo.png'): asset('/img/post/vehicle.png')  }}" alt="vehiculos">
                 </a>
                    
 
@@ -45,7 +45,7 @@
 
                 <a href="{{ route('categoria.busqueda' , 3 ) }}">
                   
-                     <img src="{{ $categoria ==  3 ? asset('/img/mapaslogo.png') : asset('/img/post/Map.png') }}" alt="Mapas">
+                     <img src="{{ $categoria ==  3 ? asset('/img/mapaslogos.png') : asset('/img/post/Map.png') }}" alt="Mapas">
                 </a>
                 
             </div>
@@ -70,7 +70,7 @@
           <div class="categoria  ">
             <div class="img"> 
                 <a href="{{ route('categoria.busqueda' , 6 ) }}">
-                 <img src="{{ $categoria ==  6 ? asset('/img/skinslogo.png') :asset('/img/post/skins.png') }}" alt="skins">
+                 <img src="{{ $categoria ==  6 ? asset('/img/Skinslogo.png') :asset('/img/post/skins.png') }}" alt="skins">
 
               </a>
               
