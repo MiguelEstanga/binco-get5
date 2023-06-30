@@ -12,11 +12,13 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-   
+    overflow-x: hidden;
     box-sizing: border-box;
 }
-
-.seccion-principal{
+a{
+    text-decoration: none;
+}
+.seccion-principal , .seccion-masvisto{
    
     max-width: 100rem;
    
@@ -25,7 +27,13 @@ body{
     padding: 10px;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr )) ;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr )) ;
+}
+
+.maspost{
+    margin: 10px auto;
+    max-width: 100rem;
+   
 }
 .paginate{
     margin: auto;
@@ -33,14 +41,17 @@ body{
     width: 15rem;
     height: 300px;
 }
-
-  @media (max-width: 1100px) {
-        .seccion-principal{
+.seccion-masvisto{
+  
+   
+}
+  @media (max-width: 1400px) {
+        .seccion-principal , .seccion-masvisto {
     
-             width: 90vw;
+             width: 95vw;
              height: auto;
             
-             margin: auto;
+           
              margin-top: 10px;
              
          
@@ -54,7 +65,7 @@ body{
     }
 
       @media (max-width: 550px) {
-        .seccion-principal{
+        .seccion-principal , .seccion-masvisto{
             display: flex;
             flex-wrap: wrap;
             justify-content: center;

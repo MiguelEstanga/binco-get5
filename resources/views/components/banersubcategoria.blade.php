@@ -19,7 +19,7 @@
         gap: 40px;
         padding: 10px;
       
-        
+       
     }
     .baner-categoria .categoria{
        display: grid;

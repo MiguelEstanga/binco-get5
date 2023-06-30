@@ -37,13 +37,13 @@
     
     @media (max-width:1700px) {
           .baner-categoria{
-           
+         
             position:relative;
             width: 100%;
             height: auto;
             display: grid;
             grid-template-columns: repeat(auto-fill,minmax(100px , 1fr));
-         
+           
             margin-top: 50px;
             gap: 10px;
             left: 0;
@@ -55,12 +55,13 @@
           .baner-categoria .categoria
           {
            
-            
+          
             height: 100px;
-            width: 100px;
+            width: 100%;
             display: grid;
-                justify-content: center;
-                align-items: center;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             grid-template-rows: repeat(2, 1fr);
             grid-template-columns: repeat(1, 1fr);
           }     
@@ -68,7 +69,12 @@
         .baner-categoria .categoria .img img
           {
             width: 100%;
+            margin: auto;
           }    
+
+          .baner-categoria .categoria .img{
+            margin: auto;
+          }
     }
 
 

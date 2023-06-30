@@ -25,14 +25,21 @@
     @yield('publicidad')
  
    @yield("subcategorias")
-
+   <h2 class="maspost" >mas post</h2>
    <section class="seccion-principal"  >
         
       
            @yield("contenido")
-      
+          
 
    </section>
+
+   <h2 class="maspost" >more likes</h2>
+   <section class="seccion-masvisto" >
+         @yield("contenido2") 
+   </section>
+
+
    <div class="paginate">
          @yield('paginate')
    </div>

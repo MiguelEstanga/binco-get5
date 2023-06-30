@@ -24,9 +24,7 @@
         </div>
             
         </div>
-        <div class="img">   
-            <img src="https://cdn.ligadegamers.com/imagenes/mods-locos-gta-v-og.jpg" alt="moods">
-        </div>
+       
     </article>
     
 
@@ -34,11 +32,11 @@
     .publicidad{
         
         position : relative;
-        
-        margin-top: 20px;
+
+        margin-top: 60px;
         position:relative;
-        left:-75px;
-        width:90rem;
+        left: -20px;
+        width:95rem;
         margin:auto;
         height: 20rem;
         display: grid;
@@ -50,8 +48,11 @@
 
     @media (max-width:1400px) {
         .publicidad{
-            left:20px;
+            left:1px;
+            width: 100vw;
         }  
+
+
     }
     .informacion{
         width: 100%;
@@ -129,11 +130,12 @@
        
     }
 
-      @media (max-width: 500px) {
+      @media (max-width: 700px) {
 
         .publicidad{
-            
-           width: 100vw;
+            left: 0;
+            margin: 0;
+            width: 100vw;
         }
 
         .publicidad .img{

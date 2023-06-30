@@ -97,8 +97,8 @@
     @if($type == false)
 
       <div class="leyenda" style="z-index: 10;  ">  
-          <h1  style="color:#fff;font-weight: 900; font-size: 50px;" >  BINCO MODS</h1>
-          <p  style="text-align: center; color: #F1C40F; font-weight: 900; " >More trash for less cash</p>
+          <h1  style="font-family: arial; color:#fff;font-weight: 900; font-size: 50px;" >  BINCO MODS</h1>
+          <p  style="font-family: arial; text-align: center; font-size: 20px; color:#D68910; font-weight: 900; " >More trash for less cash</p>
       </div>  
 
     @endif    
@@ -179,12 +179,12 @@
   
   @media (max-width:1200px) {
       .baner-horizontal{
-       
+       position: relative;
         width: 100vw;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        margin-left: 20px;
+       
         justify-content: center;
         align-items: center;
       }
@@ -194,6 +194,19 @@
         
       }
 
+      .leyenda {
+        
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+      }
+
       .baner-horizontal .categoria .text{
         font-size: 18px;
       }
@@ -201,8 +214,8 @@
 
    @media (max-width: 500px) {
      .baner-horizontal .categoria{
-      width: 60px;height: 20px;
-      
+        width: 60px;height: 20px;
+        
      }
 
      .baner-horizontal .categoria .text{

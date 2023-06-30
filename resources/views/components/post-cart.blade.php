@@ -43,7 +43,7 @@
     min-width: 380px;
     margin-bottom: 80px;
     height:15rem;
-        
+          
     box-shadow: 0 0 10px rgba(0, 0, 0, .7);
 }
 
@@ -123,10 +123,9 @@
 
 @media (max-width:550px) {
     .carta-box{
-        width: 700px;
+        width: 90vw;
         height:26rem;
         
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, .8);
         
     }
 

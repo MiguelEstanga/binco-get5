@@ -24,6 +24,17 @@
 	@endforeach
 
 @endsection
+@section("contenido2")
+
+	
+	@foreach($withmorelike as $post)
+			<a href="{{ route('post.show' , $post->id) }}">
+					<x-post-cart :post="$post" />
+			</a>
+		
+	@endforeach
+
+@endsection
 	
 @section("paginate")
 	{{ $posts->links() }}

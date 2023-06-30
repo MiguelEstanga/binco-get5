@@ -48,12 +48,12 @@
 <style type="text/css">
 .menu{
     position: fixed;
-    background-color: rgba(241, 196, 15  , 1);
+    background-color: rgba(214, 137, 16, .9);
     z-index:1000;
-    width: 100%;
+    width: 100vw;
     height: 80px;
     top: 0;
-    right: 0;
+    left: 0;
     align-items: center;
     display: flex;
     justify-content:space-between;

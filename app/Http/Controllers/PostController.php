@@ -22,9 +22,9 @@ class PostController extends Controller
     public function index()
     {
         $categoria = Categoria::all();
-        $posts = Post::where('aprovacion' , '=' , '1')->paginate(8);
+        $posts = Post::where('aprovacion' , '=' , '1')->paginate(6);
         $postmorelike = Post::withCount('likes')
-            ->orderBy('likes_count' , 'desc')->paginate(8);
+            ->orderBy('likes_count' , 'desc')->paginate(6);
          
 
         return view('Post.post' , 
@@ -65,7 +65,7 @@ class PostController extends Controller
             'archivo' =>   $request->file('archivo')->store('public'),
             'titulo' => $request->titulo,
             'descarga'=> 0,
-         
+            'aprovacion' => 1,
             'id_categoria' => $request->categoria,
             'id_subcategoria' => $request->subcategoria,
             'id_usuario' => $request->user_id
